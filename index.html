@@ -1,0 +1,859 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM TECHNOLOGY - Computer Sales & Service</title>
+    <style>
+        /* --- Import Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+        /* --- CSS Variables (Colors from your logo) --- */
+        :root {
+            --dark-blue: #000033;
+            --deep-bg: #0a0a2a; /* A very dark blue for the background */
+            --card-bg: #00004d; /* A slightly lighter blue for cards */
+            --primary-cyan: #00e5ff;
+            --text-light: #f4f4f4;
+            --text-secondary: #b0c4de;
+        }
+
+
+        /* --- Global Reset & Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--deep-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-cyan);
+        }
+
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+
+        a {
+            text-decoration: none;
+            color: var(--primary-cyan);
+        }
+
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+
+        section {
+            padding: 80px 0;
+        }
+
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            z-index: 1000;
+            background-color: rgba(0, 0, 51, 0.8); /* */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+            transition: padding 0.3s ease;
+        }
+
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+
+        .navbar .logo span {
+            color: var(--primary-cyan);
+        }
+
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+
+        .navbar .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-cyan);
+            transition: width 0.3s ease;
+        }
+
+
+        .navbar .nav-links a:hover::after,
+        .navbar .nav-links a.active::after {
+            width: 100%;
+        }
+
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 42, 0.8), rgba(10, 10, 42, 0.8)), url('https://images.unsplash.com/photo-1517694712202-14dd9e38f71e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            padding: 0 20px;
+        }
+
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            /* */
+            background: linear-gradient(90deg, var(--primary-cyan), var(--text-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+
+        .hero-content p {
+            font-size: 1.5rem;
+            /* */
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-cyan);
+            color: var(--dark-blue);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+
+        .cta-button:hover {
+            background: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 229, 255, 0.5);
+            animation: none;
+        }
+
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+
+        /* --- About Section --- */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+
+        #about .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+
+        .why-choose-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .why-choose-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+
+        .why-choose-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-cyan);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .why-choose-list li strong {
+            color: var(--text-light);
+        }
+
+
+        /* --- Services Section --- */
+        #services {
+            background-color: var(--dark-blue);
+        }
+
+
+        .section-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            font-size: 1.1rem;
+        }
+
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-bottom: 4px solid var(--primary-cyan);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1);
+        }
+
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+
+        .service-card li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+
+        .service-card li::before {
+            content: '»';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--primary-cyan);
+            font-weight: 600;
+        }
+
+
+        /* --- IT Infrastructure Section --- */
+        .it-infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+
+        .it-infra-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-cyan);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+        .it-infra-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1);
+        }
+
+
+        .it-infra-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .it-infra-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+
+        .it-infra-card li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+
+        .it-infra-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--primary-cyan);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+
+        /* --- AMC (Pricing) Section --- */
+        #amc {
+            background-color: var(--dark-blue);
+        }
+
+
+        .amc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+
+        .amc-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 5px solid var(--primary-cyan);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .amc-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15);
+        }
+
+
+        .amc-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .amc-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            margin: 10px 0;
+        }
+        
+        .amc-card .price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+
+        .amc-card .discount-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-item .icon {
+            font-size: 2rem;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
+        }
+        
+        .contact-item h4 {
+            color: var(--text-light);
+        }
+        
+        .contact-item p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .contact-item a {
+            color: var(--primary-cyan);
+            word-break: break-all;
+        }
+
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-blue);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+
+        .social-links a {
+            font-size: 1rem;
+            margin: 0 15px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-cyan);
+        }
+
+
+        .footer p {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .footer .gst-info {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+
+        /* --- Animation --- */
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, filter 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+
+        .visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        /* --- Responsive (Mobile) --- */
+        .nav-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+
+        @media(max-width: 992px) {
+            #about .about-content {
+                grid-template-columns: 1fr;
+            }
+            .amc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media(max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 20px;
+            }
+
+
+            .nav-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 70%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--dark-blue);
+                transition: right 0.5s ease-in-out;
+            }
+
+
+            .nav-links.active {
+                right: 0;
+            }
+
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <div class="logo">TEAM<span>.</span>TECHNOLOGY</div> <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#networking">Networking</a></li>
+            <li><a href="#amc">AMC</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-toggle">☰</div>
+    </nav>
+
+
+    <header class="hero" id="home">
+        <div class="hero-content hidden">
+            <h1>TEAM TECHNOLOGY</h1> <p>All Brand of Computer, Laptop, & Printers Sales & Service</p> <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </header>
+
+
+    <section id="about" class="container">
+        <div class="about-content">
+            <div class="about-text hidden">
+                <h3>Who We Are</h3>
+                <p>"Team Technology is a professional service provider specializing in computer, printer, and CCTV solutions. With years of experience, we deliver fast, reliable, and affordable services that ensure your systems run smoothly."</p> </div>
+            <div class="why-choose-us hidden">
+                <h3>Why Choose Us</h3>
+                <ul class="why-choose-list">
+                    <li><strong>Quick & Reliable Service:</strong> Fast turnaround with guaranteed quality results.</li>
+                    <li><strong>30 Days Service Warranty:</strong> Peace of mind with every service we provide.</li>
+                    <li><strong>All Brand Support:</strong> Expertise in top brands like Lenovo, Dell, Acer, LG, HCL, and Sony.</li>
+                    <li><strong>Customer-Centric Approach:</strong> We listen, understand, and deliver exactly what you need.</li>
+                    <li><strong>Affordable Pricing:</strong> High-quality service at budget-friendly rates.</li>
+                    <li><strong>Trusted & Transparent:</strong> No hidden charges, only honest and dependable solutions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="services">
+        <div class="container">
+            <h2 class="hidden">Our Core Services</h2>
+            <p class="section-intro hidden">
+                We provide complete solutions for all your computer, printer, and surveillance needs, from basic issues to advanced repairs.
+            </p>
+            <div class="service-grid">
+                <article class="service-card hidden">
+                    <h3>Computer & Laptop Services</h3> <ul>
+                        <li>System Diagnosis & Troubleshooting</li> <li>Laptop Screen & Keyboard Replacement</li> <li>Motherboard & Chip Level Repair</li> <li>Operating System Installation & Upgrades (Windows/Linux/MacOS)</li> <li>Software & Driver Installation</li> <li>Hard Disk & SSD Upgradation</li> <li>RAM & Battery Replacement</li> <li>System Cleaning & Maintenance (Dust removal, thermal paste)</li> </ul>
+                </article>
+                
+                <article class="service-card hidden">
+                    <h3>CCTV Cameras & Installation</h3> <ul>
+                        <li>Camera Installation & Configuration</li> <li>DVR/NVR Setup</li> <li>Remote Mobile Viewing Setup</li> <li>Cable Management & Network Setup</li> <li>Regular Maintenance & Troubleshooting</li> <li>Upgrading Old Systems to HD/IP Cameras</li> </ul>
+                </article>
+
+
+                <article class="service-card hidden">
+                    <h3>Monitor Repair & Maintenance</h3> <ul>
+                        <li>Display & Screen Repair (Lines, flickering, no display)</li> <li>Backlight & Power Repair (Dim screen, sudden blackout)</li> <li>Dead Monitor Recovery (Fails to power on)</li> <li>Port & Connector Repair (HDMI, VGA, Power)</li> <li>Advanced Chip-Level Service</li> <li>Brightness & Color Calibration</li> <li>Dust Cleaning & Maintenance</li> <li>Replacement of Faulty Parts (with service warranty)</li> </ul>
+                </article>
+                
+                <article class="service-card hidden">
+                    <h3>Toner Refilling & Printer Services</h3> <ul>
+                        <li>High-Quality Toner Refilling (Premium, no-leak, page-yield tested)</li>
+                        <li>Dot Matrix Printer Service (Head alignment, ribbon replacement)</li> <li>HP LaserJet Printer Service (Cleaning, toner check, part replacement)</li> <li>Colour Printer Service (Inkjet/Laser repair, head cleaning, calibration)</li> <li>Network and Wireless Printer Configuration</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="networking" class="container">
+        <h2 class="hidden">Advanced IT Infrastructure & Networking</h2>
+        <p class="section-intro hidden">
+            We provide robust IT and networking solutions to streamline your business operations and ensure maximum security and efficiency.
+        </p>
+        <div class="it-infra-grid">
+            <article class="it-infra-card hidden">
+                <h3>AD / FS Server</h3>
+                <ul>
+                    <li>Centralized domain and user management</li>
+                    <li>Group Policy management for security</li>
+                    <li>File sharing with access control</li>
+                    <li>Data backup and restore management</li>
+                </ul>
+            </article>
+            <article class="it-infra-card hidden">
+                <h3>Firewall</h3>
+                <ul>
+                    <li>Next-generation threat prevention</li>
+                    <li>Application-level filtering and content inspection</li>
+                    <li>Secure site-to-site and remote VPN</li>
+                    <li>Traffic shaping and bandwidth management</li>
+                </ul>
+            </article>
+            <article class="it-infra-card hidden">
+                <h3>VPN (Virtual Private Network)</h3>
+                <ul>
+                    <li>Secure, encrypted remote access</li>
+                    <li>Supports SSL/IPSec protocols</li>
+                    <li>Multi-user concurrent sessions</li>
+                    <li>Authentication with AD/LDAP integration</li>
+                </ul>
+            </article>
+            <article class="it-infra-card hidden">
+                <h3>Access Point (AP)</h3>
+                <ul>
+                    <li>High-speed wireless connectivity</li>
+                    <li>Dual-band Wi-Fi (2.4GHz & 5GHz)</li>
+                    <li>Seamless roaming between APs</li>
+                    <li>Centralized controller-based management</li>
+                </ul>
+            </article>
+            <article class="it-infra-card hidden">
+                <h3>Router & RF</h3>
+                <ul>
+                    <li>WAN/LAN routing with static/dynamic protocols</li>
+                    <li>Load balancing and failover capabilities</li>
+                    <li>QoS for prioritizing critical traffic</li>
+                    <li>RF (Radio Frequency) for long-distance wireless</li>
+                </ul>
+            </article>
+            <article class="it-infra-card hidden">
+                <h3>Advanced Level Networking</h3>
+                <ul>
+                    <li>Layer 3 managed switches with VLAN</li>
+                    <li>Network redundancy (STP/RSTP/LACP)</li>
+                    <li>Network segmentation and security zoning</li>
+                    <li>Centralized NMS (Network Management)</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+
+    <section id="amc">
+        <div class="container">
+            <h2 class="hidden">Annual Maintenance Contracts (AMC)</h2>
+            <p class="section-intro hidden">
+                Protect your devices and ensure they run smoothly all year long with our affordable AMC packages. </p>
+            <div class="amc-grid">
+                <article class="amc-card hidden">
+                    <h3>Per PC</h3>
+                    <div class="price">₹3000<span>/Year</span></div>
+                    <p class="discount-info">
+                        Reduced to ₹2500/Year for 10 or more Computers.
+                    </p>
+                </article>
+                <article class="amc-card hidden">
+                    <h3>Per Laptop</h3>
+                    <div class="price">₹1800<span>/Year</span></div>
+                    <p class="discount-info">
+                        Reduced to ₹1500/Year for 10 or more Laptops.
+                    </p>
+                </article>
+                <article class="amc-card hidden">
+                    <h3>Per Dot Matrix Printer</h3>
+                    <div class="price">₹3000<span>/Year</span></div>
+                    <p class="discount-info">
+                        Reduced to ₹2500/Year for 10 or more Printers.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="container">
+        <h2 class="hidden">Get In Touch</h2>
+        <p class="section-intro hidden">
+            We're here to help! Call us, email us, or visit our office.
+        </p>
+        <div class="contact-grid">
+            <div class="contact-item hidden">
+                <div class="icon">📞</div>
+                <h4>Phone</h4>
+                <p><a href="tel:9952542500">9952542500</a></p> <p><a href="tel:9952432500">9952432500</a></p> </div>
+            <div class="contact-item hidden">
+                <div class="icon">✉️</div>
+                <h4>Email</h4>
+                <p><a href="mailto:mailtoteamtech@gmail.com">mailtoteamtech@gmail.com</a></p> </div>
+             <div class="contact-item hidden">
+                <div class="icon">📱</div>
+                <h4>Social Media</h4>
+                <p><a href="#">Instagram: @TEAMTECH2022</a></p> <p><a href="#">Facebook: @TEAMTECHNOLOGY</a></p> </div>
+            <div class="contact-item hidden">
+                <div class="icon">📍</div>
+                <h4>Address</h4>
+                <p>NO 574, INDIAN OVERSEAS ATM, NEAR 1st FLOOR NEW BUS STAND, BHAVANI, ERODE - 638301.</p> </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#">Instagram (@TEAMTECH2022)</a> <a href="#">Facebook (@TEAMTECHNOLOGY)</a> </div>
+            <p>&copy; 2025 TEAM TECHNOLOGY. All Rights Reserved. Since 2022.</p> <p class="gst-info">GST: 33DPAPP1052P1ZS</p> </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Intersection Observer for Fade-in Animation ---
+            const hiddenElements = document.querySelectorAll('.hidden');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Optional: remove to re-animate every time
+                        // entry.target.classList.remove('visible'); 
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+
+            hiddenElements.forEach(el => observer.observe(el));
+
+
+            // --- Mobile Navigation Toggle ---
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                // Toggle hamburger icon text (simple toggle)
+                navToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+
+            // --- Close mobile nav when a link is clicked ---
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        navToggle.textContent = '☰';
+                    }
+                });
+            });
+
+
+            // --- Active Nav Link Scrolling ---
+            const sections = document.querySelectorAll('section, header');
+            const navLi = document.querySelectorAll('.nav-links a');
+
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) { // 100px offset
+                        current = section.getAttribute('id');
+                    }
+                });
+
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') == '#' + current) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+
+        });
+    </script>
+</body>
+</html>
